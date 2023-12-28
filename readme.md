@@ -1,0 +1,2 @@
+## Personal configuration for NeoVim
+

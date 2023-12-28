@@ -12,9 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    { 'folke/lazy.nvim' },
-    { 'folke/neodev.nvim' },
-    { 'rose-pine/neovim',     name = 'rose-pine' },
+    -- From packer author
+    { 'folke/lazy.nvim' },   -- Packer itself
+    { 'folke/neodev.nvim' }, -- Vim global variable for lua
+
+    -- Schemes
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine'
+    },
     { 'rebelot/kanagawa.nvim' },
     {
         'folke/tokyonight.nvim',
@@ -22,6 +28,8 @@ require('lazy').setup({
         priority = 1000,
         opts = {},
     },
+
+    -- Required by nvim-telescope/telescope
     { 'BurntSushi/ripgrep' },
     { 'sharkdp/fd' },
     {
@@ -30,22 +38,31 @@ require('lazy').setup({
         -- or                              , branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'nvim-treesitter/nvim-treesitter',  build = ':TSUpdate' },
-    { 'theprimeagen/harpoon' },
+
+    {
+        'nvim-treesitter/nvim-treesitter', -- Symbol tree
+        build = ':TSUpdate'
+    },
+    { 'theprimeagen/harpoon' }, -- File switcher
     { 'mbbill/undotree' },
     { 'tpope/vim-fugitive' },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
 
     -- VonHeikemen/lsp-zero.nvim
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x'
+    },
     { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'L3MON4D3/LuaSnip' },
 })
-
---require('rose-pine').setup({
---	variant = 'dawn',
---})
---vim.cmd('colorscheme rose-pine')
