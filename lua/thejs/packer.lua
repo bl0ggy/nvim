@@ -45,13 +45,21 @@ require('lazy').setup({
     },
     { 'theprimeagen/harpoon' }, -- File switcher
     { 'mbbill/undotree' },
+
+    -- Git
     { 'tpope/vim-fugitive' },
+    { 'airblade/vim-gitgutter' },
 
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
+    },
+
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
     },
 
     -- VonHeikemen/lsp-zero.nvim
